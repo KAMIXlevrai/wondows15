@@ -367,6 +367,51 @@
       transform: rotate(-45deg);
     }
 
+    .icone-drift {
+    top: 200px;
+    left: 200px;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 780px;
+    right: 30px;
+    /* Autres styles */
+    }
+
+    .icone-drift img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .icone-drift span {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .icone-drift .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      z-index: 999;
+    }
+
+    .icone-drift .video-container .video-frame {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+    }
+
     .icone-youtube {
       width: 80px;
       height: 80px;
@@ -471,6 +516,15 @@
         </div>
       </div>
 
+      <div class="icone-drift" onclick="ouvrirdriftVideo('./assets/driftvideo.mp4')" onmousedown="startDrag(event)">
+        <img src="./assets/drift.gif" alt="Icône">
+        <span>video_drift.mp4</span>
+        <div class="video-container">
+          <video class="video-frame" controls></video>
+          <div class="close-button" onclick="fermerdriftVideo()"></div>
+        </div>
+      </div>
+
       <div class="icone-video" onclick="ouvrirVideo('assets/video.mp4')" onmousedown="startDrag(event)">
         <img src="./assets/full.gif" alt="Icône">
         <span>video ???</span>
@@ -556,6 +610,26 @@
       videoContainer.style.display = 'none';
       closeButton.style.display = 'none';
     }
+
+    function ouvrirdriftVideo(videoPath) {
+      var videoContainer = document.querySelector('.icone-drift .video-container');
+      var videoFrame = videoContainer.querySelector('.video-frame');
+      var closeButton = videoContainer.querySelector('.close-button');
+
+      videoFrame.src = videoPath;
+      videoContainer.style.display = 'block';
+      closeButton.style.display = 'block';
+    }
+
+    function fermerdriftVideo() {
+      var videoContainer = document.querySelector('.icone-drift .video-container');
+      var videoFrame = videoContainer.querySelector('.video-frame');
+      var closeButton = videoContainer.querySelector('.close-button');
+
+  videoFrame.src = '';
+  videoContainer.style.display = 'none';
+  closeButton.style.display = 'none';
+}
 
     function playMusic(musicPath) {
       var musicContainer = document.querySelector('.icone-music .music-container');
