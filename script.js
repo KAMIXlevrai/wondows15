@@ -37,7 +37,17 @@ function ouvrirPage(url) {
     var videoFrame = videoContainer.querySelector('.video-frame');
     var closeButton = videoContainer.querySelector('.close-button');
 
-    videoFrame.src = '';
+    videoFrame.src = 'assets/video.mp4';
+    videoContainer.style.display = 'none';
+    closeButton.style.display = 'none';
+  }
+
+  function FermermaVideo() {
+    var videoContainer = document.querySelector('.icone-video .video-container');
+    var videoFrame = videoContainer.querySelector('.video-frame');
+    var closeButton = videoContainer.querySelector('.close-button');
+
+    videoFrame.src = 'assets/mars.mp4';
     videoContainer.style.display = 'none';
     closeButton.style.display = 'none';
   }
